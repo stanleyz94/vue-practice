@@ -10,14 +10,15 @@ export default {
     };
 
     const response = await fetch(
-      `https://vue-http-demo-c7a01-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`,
+      `https://vue-http-demo-85e9e.firebaseio.com/coaches/${userId}.json`,
       {
         method: 'PUT',
         body: JSON.stringify(coachData)
       }
     );
 
-    //const responseData = await response.json();
+    // const responseData = await response.json();
+
     if (!response.ok) {
       // error ...
     }
@@ -28,12 +29,12 @@ export default {
     });
   },
   async loadCoaches(context, payload) {
-    if (payload.forceRefresh && !context.getters.shouldUpdate) {
+    if (!payload.forceRefresh && !context.getters.shouldUpdate) {
       return;
     }
 
     const response = await fetch(
-      `https://vue-http-demo-c7a01-default-rtdb.europe-west1.firebasedatabase.app/coaches.jso`
+      `https://vue-http-demo-85e9e.firebaseio.com/coaches.json`
     );
     const responseData = await response.json();
 
@@ -41,8 +42,9 @@ export default {
       const error = new Error(responseData.message || 'Failed to fetch!');
       throw error;
     }
-    console.log(responseData);
+
     const coaches = [];
+
     for (const key in responseData) {
       const coach = {
         id: key,
@@ -52,10 +54,9 @@ export default {
         hourlyRate: responseData[key].hourlyRate,
         areas: responseData[key].areas
       };
-      console.log(coach);
       coaches.push(coach);
-      console.log(coaches);
     }
+
     context.commit('setCoaches', coaches);
     context.commit('setFetchTimestamp');
   }

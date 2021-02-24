@@ -26,17 +26,17 @@ export default {
   props: {
     show: {
       type: Boolean,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      required: false
+      required: false,
     },
     fixed: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: false,
+    },
   },
   emits: ['close'],
   methods: {
@@ -45,8 +45,8 @@ export default {
         return;
       }
       this.$emit('close');
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -98,10 +98,7 @@ menu {
   margin: 0;
 }
 
-.dialog-enter-from {
-  opacity: 0;
-  transform: scale(0.8);
-}
+.dialog-enter-from,
 .dialog-leave-to {
   opacity: 0;
   transform: scale(0.8);
@@ -115,11 +112,7 @@ menu {
   transition: all 0.3s ease-in;
 }
 
-.dialog-enter-to {
-  opacity: 1;
-  transform: scale(1);
-}
-
+.dialog-enter-to,
 .dialog-leave-from {
   opacity: 1;
   transform: scale(1);

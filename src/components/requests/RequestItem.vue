@@ -1,7 +1,7 @@
 <template>
   <li>
     <div>
-      <a :href="emailLink"> {{ email }}</a>
+      <a :href="emailLink">{{ email }}</a>
     </div>
     <p>{{ message }}</p>
   </li>
@@ -15,7 +15,7 @@ export default {
       return 'mailto:' + this.email;
     }
   }
-};
+}
 </script>
 
 <style scoped>

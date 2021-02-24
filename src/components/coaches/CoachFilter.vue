@@ -36,12 +36,11 @@ export default {
         ...this.filters,
         [inputId]: isActive
       };
-
       this.filters = updatedFilters;
       this.$emit('change-filter', updatedFilters);
     }
   }
-};
+}
 </script>
 
 <style scoped>

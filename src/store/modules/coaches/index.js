@@ -29,7 +29,7 @@ export default {
       ]
     };
   },
-  mutations: mutations,
+  mutations,
   actions,
   getters
 };
