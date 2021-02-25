@@ -4,8 +4,10 @@ export default {
       userEmail: payload.email,
       message: payload.message
     };
+    const token = context.rootGetters.token;
     const response = await fetch(
-      `https://vue-http-demo-c7a01-default-rtdb.europe-west1.firebasedatabase.app/requests/${payload.coachId}.json`,
+      `https://vue-http-demo-c7a01-default-rtdb.europe-west1.firebasedatabase.app/requests/${payload.coachId}.json?auth=` +
+        token,
       {
         method: 'POST',
         body: JSON.stringify(newRequest)
